@@ -1,8 +1,11 @@
 package main;
 
 import java.awt.Graphics;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.MouseListener;
 
+import gamestates.GameSelect;
 import gamestates.Gamestate;
 import gamestates.Menu;
 import gamestates.TicTac;
@@ -16,17 +19,14 @@ public class Game implements Runnable {
 	private final int UPS_SET = 200;
 
 	private TicTac ticTac;
-	//private Playing playing;
+	private GameSelect gameSelect;
 	private Menu menu;
 
-	public final static int TILES_DEFAULT_SIZE = 32;
-	public final static float SCALE = 1f;
-	public final static int TILES_IN_WIDTH = 26;
-	public final static int TILES_IN_HEIGHT = 14;
-	public final static int TILES_SIZE = (int) (TILES_DEFAULT_SIZE * SCALE);
-	public final static int GAME_WIDTH = 1080;
-			//TILES_SIZE * TILES_IN_WIDTH;
-	public final static int GAME_HEIGHT = TILES_SIZE * TILES_IN_HEIGHT;
+	public final static GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	
+	public final static float SCALE = 2f;
+	public final static int GAME_WIDTH = 1920;
+	public final static int GAME_HEIGHT = 1080;
 
 	public Game() {
 		initClasses();
@@ -41,7 +41,7 @@ public class Game implements Runnable {
 
 	private void initClasses() {
 		menu = new Menu(this);
-//		playing = new Playing(this);
+		gameSelect = new GameSelect(this);
 		ticTac = new TicTac(this);
 	}
 
@@ -54,6 +54,9 @@ public class Game implements Runnable {
 		switch (Gamestate.state) {
 		case MENU:
 			menu.update();
+			break;
+		case GAMESELECT:
+			gameSelect.update();
 			break;
 		case TICTAC:
             ticTac.update();
@@ -71,6 +74,9 @@ public class Game implements Runnable {
 		switch (Gamestate.state) {
 		case MENU:
 			menu.draw(g);
+			break;
+		case GAMESELECT:
+			gameSelect.draw(g);
 			break;
 		case TICTAC:
             ticTac.draw(g);
@@ -131,6 +137,10 @@ public class Game implements Runnable {
 
 	public Menu getMenu() {
 		return menu;
+	}
+	
+	public GameSelect getGameSelect() {
+		return gameSelect;
 	}
 
 

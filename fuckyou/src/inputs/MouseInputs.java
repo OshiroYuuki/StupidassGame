@@ -26,6 +26,9 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
             case MENU:
                 gamePanel.getGame().getMenu().mouseMoved(e);
                 break;
+            case GAMESELECT:
+    			gamePanel.getGame().getGameSelect().mouseMoved(e);
+    			break;
             case TICTAC:
                 gamePanel.getGame().getTicTac().mouseMoved(e);
                 break;
@@ -40,6 +43,9 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
         switch (Gamestate.state) {
             case MENU:
                 gamePanel.getGame().getMenu().mouseClicked(e);
+                break;
+            case GAMESELECT:
+                gamePanel.getGame().getGameSelect().mouseClicked(e);
                 break;
             case TICTAC:
                 gamePanel.getGame().getTicTac().mouseClicked(e);
@@ -56,6 +62,9 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
             case MENU:
                 gamePanel.getGame().getMenu().mousePressed(e);
                 break;
+            case GAMESELECT:
+                gamePanel.getGame().getGameSelect().mousePressed(e);
+                break;
             case TICTAC:
                 gamePanel.getGame().getTicTac().mousePressed(e);
                 break;
@@ -70,6 +79,9 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
         switch (Gamestate.state) {
             case MENU:
                 gamePanel.getGame().getMenu().mouseReleased(e);
+                break;
+            case GAMESELECT:
+                gamePanel.getGame().getGameSelect().mouseReleased(e);
                 break;
             case TICTAC:
                 gamePanel.getGame().getTicTac().mouseReleased(e);

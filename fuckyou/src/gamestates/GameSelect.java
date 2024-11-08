@@ -9,13 +9,13 @@ import main.Game;
 import ui.MenuButton;
 import utilz.LoadSave;
 
-public class Menu extends State implements Statemethods {
+public class GameSelect extends State implements Statemethods {
 
-	private MenuButton[] buttons = new MenuButton[2];
+	private MenuButton[] buttons = new MenuButton[3];
 	private BufferedImage backgroundImg, backgroundImgPink;
 	private int menuX, menuY, menuWidth, menuHeight;
 
-	public Menu(Game game) {
+	public GameSelect(Game game) {
 		super(game);
 		loadButtons();
 		loadBackground();
@@ -33,9 +33,9 @@ public class Menu extends State implements Statemethods {
 	}
 
 	private void loadButtons() {
-		buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (150 * Game.SCALE), 0, Gamestate.GAMESELECT);
-		buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (220 * Game.SCALE), 1, Gamestate.GAMESELECT);
-	//	buttons[2] = new MenuButton(Game.GAME_WIDTH / 2, (int) (290 * Game.SCALE), 2, Gamestate.QUIT);
+		buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (150 * Game.SCALE), 0, Gamestate.TICTAC);
+		buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (220 * Game.SCALE), 1, Gamestate.OPTIONS);
+		buttons[2] = new MenuButton(Game.GAME_WIDTH / 2, (int) (290 * Game.SCALE), 2, Gamestate.QUIT);
 	}
 
 	@Override
@@ -115,5 +115,5 @@ public class Menu extends State implements Statemethods {
 		// TODO Auto-generated method stub
 
 	}
-
 }
+

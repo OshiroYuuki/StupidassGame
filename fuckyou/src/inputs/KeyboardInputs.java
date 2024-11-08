@@ -40,9 +40,9 @@ public class KeyboardInputs implements KeyListener {
 		case MENU:
 			gamePanel.getGame().getMenu().keyPressed(e);
 			break;
-//		case PLAYING:
-//			gamePanel.getGame().getPlaying().keyPressed(e);
-//			break;
+		case GAMESELECT:
+			gamePanel.getGame().getGameSelect().keyPressed(e);
+			break;
 		default:
 			break;
 		}

@@ -2,6 +2,8 @@ package main;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Toolkit;
+
 import javax.swing.JPanel;
 import inputs.KeyboardInputs;
 import inputs.MouseInputs;
@@ -23,7 +25,7 @@ public class GamePanel extends JPanel {
 	}
 
 	private void setPanelSize() {
-		Dimension size = new Dimension(GAME_WIDTH, GAME_HEIGHT);
+		Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
 		setPreferredSize(size);
 	}
 
