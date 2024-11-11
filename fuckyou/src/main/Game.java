@@ -21,10 +21,9 @@ public class Game implements Runnable {
 	private TicTac ticTac;
 	private GameSelect gameSelect;
 	private Menu menu;
-
-	public final static GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	private boolean paused = false;
 	
-	public final static float SCALE = 2f;
+	public final static float SCALE = 1.5f;
 	public final static int GAME_WIDTH = 1920;
 	public final static int GAME_HEIGHT = 1080;
 
@@ -108,33 +107,39 @@ public class Game implements Runnable {
 			deltaF += (currentTime - previousTime) / timePerFrame;
 			previousTime = currentTime;
 
-			if (deltaU >= 1) {
-				update();
-				updates++;
-				deltaU--;
-			}
-
-			if (deltaF >= 1) {
-				gamePanel.repaint();
-				frames++;
-				deltaF--;
-			}
-
-			if (System.currentTimeMillis() - lastCheck >= 1000) {
-				lastCheck = System.currentTimeMillis();
-				System.out.println("FPS: " + frames + " | UPS: " + updates);
-				frames = 0;
-				updates = 0;
-
+			if(!paused) {
+				if (deltaU >= 1) {
+					update();
+					updates++;
+					deltaU--;
+				}
+	
+				if (deltaF >= 1) {
+					gamePanel.repaint();
+					frames++;
+					deltaF--;
+				}
+	
+				if (System.currentTimeMillis() - lastCheck >= 1000) {
+					lastCheck = System.currentTimeMillis();
+					System.out.println("FPS: " + frames + " | UPS: " + updates);
+					frames = 0;
+					updates = 0;
+	
+				}
 			}
 		}
 
 	}
 
 	public void windowFocusLost() {
-
+		paused = true;
 	}
-
+	
+	public void windowFocusGained() {
+		paused = false;	
+	}
+	
 	public Menu getMenu() {
 		return menu;
 	}
@@ -147,4 +152,6 @@ public class Game implements Runnable {
 	public TicTac getTicTac() {
 		return ticTac;
 	}
+
+	
 }

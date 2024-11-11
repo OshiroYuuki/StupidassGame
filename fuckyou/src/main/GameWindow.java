@@ -15,7 +15,7 @@ public class GameWindow {
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jframe.add(gamePanel);
 		
-		//jframe.setUndecorated(true);
+		jframe.setUndecorated(true);
 		jframe.pack();		
 		jframe.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		jframe.setVisible(true);
@@ -28,7 +28,7 @@ public class GameWindow {
 
 			@Override
 			public void windowGainedFocus(WindowEvent e) {
-				// TODO Auto-generated method stub
+				gamePanel.getGame().windowFocusGained();
 
 			}
 		});

@@ -6,12 +6,12 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import main.Game;
-import ui.MenuButton;
+import ui.SelectButton;
 import utilz.LoadSave;
 
 public class GameSelect extends State implements Statemethods {
 
-	private MenuButton[] buttons = new MenuButton[3];
+	private SelectButton[] buttons = new SelectButton[3];
 	private BufferedImage backgroundImg, backgroundImgPink;
 	private int menuX, menuY, menuWidth, menuHeight;
 
@@ -19,7 +19,7 @@ public class GameSelect extends State implements Statemethods {
 		super(game);
 		loadButtons();
 		loadBackground();
-		backgroundImgPink = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND_IMG);
+		backgroundImgPink = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND_IMGM);
 
 	}
 
@@ -33,15 +33,15 @@ public class GameSelect extends State implements Statemethods {
 	}
 
 	private void loadButtons() {
-		buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (150 * Game.SCALE), 0, Gamestate.TICTAC);
-		buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (220 * Game.SCALE), 1, Gamestate.OPTIONS);
-		buttons[2] = new MenuButton(Game.GAME_WIDTH / 2, (int) (290 * Game.SCALE), 2, Gamestate.QUIT);
+		buttons[0] = new SelectButton(Game.GAME_WIDTH / 2, (int) (150 * Game.SCALE), 0, Gamemode.LOCAL);
+		buttons[1] = new SelectButton(Game.GAME_WIDTH / 2, (int) (220 * Game.SCALE), 1, Gamemode.PVA);
+		buttons[2] = new SelectButton(Game.GAME_WIDTH / 2, (int) (290 * Game.SCALE), 2, Gamemode.ONLINE);
 	}
 
 	@Override
 	public void update() {
-		for (MenuButton mb : buttons)
-			mb.update();
+		for (SelectButton sb : buttons)
+			sb.update();
 	}
 
 	@Override
@@ -50,8 +50,8 @@ public class GameSelect extends State implements Statemethods {
 		g.drawImage(backgroundImgPink, 0, 0, Game.GAME_WIDTH, Game.GAME_HEIGHT, null);
 		g.drawImage(backgroundImg, menuX, menuY, menuWidth, menuHeight, null);
 
-		for (MenuButton mb : buttons)
-			mb.draw(g);
+		for (SelectButton sb : buttons)
+			sb.draw(g);
 	}
 
 	@Override
@@ -62,9 +62,9 @@ public class GameSelect extends State implements Statemethods {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		for (MenuButton mb : buttons) {
-			if (isIn(e, mb)) {
-				mb.setMousePressed(true);
+		for (SelectButton sb : buttons) {
+			if (isIn(e, sb)) {
+				sb.setMousePressed(true);
 			}
 		}
 
@@ -72,10 +72,10 @@ public class GameSelect extends State implements Statemethods {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		for (MenuButton mb : buttons) {
-			if (isIn(e, mb)) {
-				if (mb.isMousePressed())
-					mb.applyGamestate();
+		for (SelectButton sb : buttons) {
+			if (isIn(e, sb)) {
+				if (sb.isMousePressed())
+					sb.applyGamemode();
 				break;
 			}
 		}
@@ -85,19 +85,19 @@ public class GameSelect extends State implements Statemethods {
 	}
 
 	private void resetButtons() {
-		for (MenuButton mb : buttons)
-			mb.resetBools();
+		for (SelectButton sb : buttons)
+			sb.resetBools();
 
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		for (MenuButton mb : buttons)
-			mb.setMouseOver(false);
+		for (SelectButton sb : buttons)
+			sb.setMouseOver(false);
 
-		for (MenuButton mb : buttons)
-			if (isIn(e, mb)) {
-				mb.setMouseOver(true);
+		for (SelectButton sb : buttons)
+			if (isIn(e, sb)) {
+				sb.setMouseOver(true);
 				break;
 			}
 

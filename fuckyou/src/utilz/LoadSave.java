@@ -1,6 +1,5 @@
 package utilz;
 
-import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,10 +17,15 @@ public class LoadSave {
 	public static final String SOUND_BUTTONS = "soundbutton.png";
 	public static final String URM_BUTTONS = "urmbuttons.png";
 	public static final String VOLUME_BUTTONS = "volumebuttons.png";
-	public static final String MENU_BACKGROUND_IMG = "backgroundmenu.png";
+//	public static final String MENU_BACKGROUND_IMG = "temp.png";
+	public static final String MENU_BACKGROUND_IMG = "fuu.png";
+	public static final String MENU_BACKGROUND_IMGM = "fu.png";
 	public static final String PLAYING_BG_IMG = "playingbg_img.png";
 	public static final String BIG_CLOUDS = "bigclouds.png";
 	public static final String SMALL_CLOUDS = "smallclouds.png";
+	public static final String P1 = "player1Sprite.png";
+	public static final String P2 = "player2Sprite.png";
+	public static final String BOARD = "boardSprite.png";
 
 	public static BufferedImage GetSpriteAtlas(String fileName) {
 		BufferedImage img = null;

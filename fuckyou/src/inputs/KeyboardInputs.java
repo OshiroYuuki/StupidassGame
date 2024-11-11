@@ -40,8 +40,8 @@ public class KeyboardInputs implements KeyListener {
 		case MENU:
 			gamePanel.getGame().getMenu().keyPressed(e);
 			break;
-		case GAMESELECT:
-			gamePanel.getGame().getGameSelect().keyPressed(e);
+		case TICTAC:
+			gamePanel.getGame().getTicTac().keyPressed(e);
 			break;
 		default:
 			break;

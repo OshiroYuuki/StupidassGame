@@ -12,8 +12,9 @@ import utilz.LoadSave;
 public class Menu extends State implements Statemethods {
 
 	private MenuButton[] buttons = new MenuButton[2];
-	private BufferedImage backgroundImg, backgroundImgPink;
+	private BufferedImage backgroundImg, backgroundImgPink, backgroundImgLake;
 	private int menuX, menuY, menuWidth, menuHeight;
+	private int lakeXOffset;
 
 	public Menu(Game game) {
 		super(game);
@@ -28,14 +29,13 @@ public class Menu extends State implements Statemethods {
 		menuWidth = (int) (backgroundImg.getWidth() * Game.SCALE);
 		menuHeight = (int) (backgroundImg.getHeight() * Game.SCALE);
 		menuX = Game.GAME_WIDTH / 2 - menuWidth / 2;
-		menuY = (int) (45 * Game.SCALE);
+		menuY = (int) (145 * Game.SCALE);
 
 	}
 
 	private void loadButtons() {
-		buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (150 * Game.SCALE), 0, Gamestate.GAMESELECT);
-		buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (220 * Game.SCALE), 1, Gamestate.GAMESELECT);
-	//	buttons[2] = new MenuButton(Game.GAME_WIDTH / 2, (int) (290 * Game.SCALE), 2, Gamestate.QUIT);
+		buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (270 * Game.SCALE), 0, Gamestate.GAMESELECT);
+		buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (360 * Game.SCALE), 2, Gamestate.QUIT);
 	}
 
 	@Override
